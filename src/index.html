@@ -21,9 +21,13 @@
 	</form>
 	<div id="results">
 	</div>
+	<div class="loader" id="loader"></div>
+	<div class="map"></div>
 	<script>
 		document.getElementById('locationForm').addEventListener('submit', async function (event) {
 			event.preventDefault();
+			const loader = document.getElementById('loader');
+			loader.style.display = 'block';
 			const prompt = document.getElementById('locationInput').value;
 			const response = await fetch('/generate', {
 				method: 'POST',
@@ -33,6 +37,7 @@
 				body: JSON.stringify({ prompt })
 			});
 			const data = await response.json();
+			loader.style.display = 'none';
 			document.getElementById('results').innerText = data.response;
 		});
 	</script>

@@ -17,7 +17,7 @@ app.post('/generate', async (req, res) => {
 	const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 	try {
-		const result = await model.generateContent("Search a place to travel with this preferences:" + prompt);
+		const result = await model.generateContent("Search 15 places to travel with this preferences:" + prompt + ", and print it in lineal text format, without * or - or any other special character. You only can add a new line");
 		res.json({ response: result.response.text() });
 	} catch (error) {
 		res.status(500).json({ error: error.message });

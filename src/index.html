@@ -21,7 +21,21 @@
 	</form>
 	<div id="results">
 	</div>
-	<script src="script.js"></script>
+	<script>
+		document.getElementById('locationForm').addEventListener('submit', async function(event) {
+			event.preventDefault();
+			const prompt = document.getElementById('locationInput').value;
+			const response = await fetch('/generate', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ prompt })
+			});
+			const data = await response.json();
+			document.getElementById('results').innerText = data.response;
+		});
+	</script>
 </body>
 
 </html>

@@ -1,5 +1,12 @@
-FROM nginx:alpine
+FROM node:alpine
 
-COPY src/. /usr/share/nginx/html
+WORKDIR /app
 
-EXPOSE 8080
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

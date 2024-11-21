@@ -22,7 +22,7 @@
 	<div id="results">
 	</div>
 	<script>
-		document.getElementById('locationForm').addEventListener('submit', async function(event) {
+		document.getElementById('locationForm').addEventListener('submit', async function (event) {
 			event.preventDefault();
 			const prompt = document.getElementById('locationInput').value;
 			const response = await fetch('/generate', {
